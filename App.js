@@ -8,7 +8,8 @@
 
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
-import HelloComponent from './HelloComponent'
+import HelloComponent from './HelloComponent';
+import LifecycleComponent from './component/LifecycleComponent'
 
 const instructions = Platform.select({
     ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -19,13 +20,32 @@ const instructions = Platform.select({
 
 type Props = {};
 export default class App extends Component<Props> {
+    constructor(props) {
+        super(props);
+        this.state = {
+            remove: false
+        }
+    }
+
     render() {
+        let view = this.state.remove ? null : <LifecycleComponent/>;
+        let text = this.state.remove ? "添加" : "移除";
         return (
             <View style={styles.container}>
                 <Text style={styles.welcome}>Welcome to React Native!</Text>
                 <Text style={styles.instructions}>To get started, edit App.js</Text>
                 <Text style={styles.instructions}>{instructions}</Text>
-                <HelloComponent/>
+                <HelloComponent name="咿呀"/>
+                <LifecycleComponent/>
+                <Text
+                    onPress={() => {
+                        this.setState({
+                            remove: !this.state.remove
+                        })
+                    }}
+                    style={{fontSize: 20}}
+                >{text}</Text>
+                {view}
             </View>
         );
     }
