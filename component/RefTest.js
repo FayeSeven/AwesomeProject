@@ -1,10 +1,11 @@
 /**
- * Created by 熙冰 on 2018/10/25
+ * Created by 熙冰
+ * 2018/10/25 20:00
  */
 import React, {Component} from 'react';
-import {StyleSheet, Text, View, Image} from 'react-native';
+import {Text, View, Image} from 'react-native';
 
-export default class StateTest extends Component {
+export default class RefTest extends Component {
     state = {
         size: 80,
     }
@@ -16,10 +17,14 @@ export default class StateTest extends Component {
         }*/
     }
 
+    getSize() {
+        return this.state.size;
+    }
+
     render() {
         return (
             <View>
-                <Text style={{fontSize: 20, backgroundColor: 'red'}}>Hello.{this.state.size}</Text>
+                <Text style={{fontSize: 20, backgroundColor: 'red'}}>{this.state.size}</Text>
                 <Text
                     onPress={() => {
                         this.setState({

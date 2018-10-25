@@ -13,12 +13,15 @@ import LifecycleComponent from './component/LifecycleComponent';
 import EIComponent, {name, age, sum} from './component/EIComponent';
 import PropsTest from './component/PropsTest';
 import StateTest from './component/StateTest';
+import RefTest from './component/RefTest';
+import Student from './assets/class/Student';
+import MingStudent from './assets/class/MingStudent';
 
 const instructions = Platform.select({
     ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
     android:
-        'Double tap R on your keyboard to reload,\n' +
-        'Shake or press menu button for dev menu',
+    'Double tap R on your keyboard to reload,\n' +
+    'Shake or press menu button for dev menu',
 });
 
 type Props = {};
@@ -27,8 +30,11 @@ export default class App extends Component<Props> {
         super(props);
         this.state = ({
             remove: false,
-            result: ''
-        })
+            result: '',
+            size: 0
+        });
+        this.stu = new Student('小红', '女', 16);
+        this.ming = new MingStudent();
     }
 
     render() {
@@ -77,6 +83,30 @@ export default class App extends Component<Props> {
                     <View style={styles.inside}>
                         <StateTest/>
                     </View>
+                    <View style={styles.inside}>
+                        <Text
+                            style={{fontSize: 20}}
+                            onPress={() => {
+                                //let size = this.refs.reftest.getSize();
+                                //this.refs[refTest]
+
+                                let size = this.reftest.getSize();
+                                this.setState({
+                                    size: size,
+                                })
+                            }}
+                        >获取大小:{this.state.size}</Text>
+                        <RefTest
+                            //ref="reftest"
+                            ref={reftest => {
+                                this.reftest = reftest
+                            }}
+                        />
+                    </View>
+                    <View style={styles.inside}>
+                        <Text>{this.stu.getDescription()}</Text>
+                        <Text>{this.ming.getDescription()}</Text>
+                    </View>
                 </View>
             </ScrollView>
         );
@@ -87,7 +117,6 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
-        alignItems: 'center',
         backgroundColor: '#F5FCFF',
     },
     welcome: {
