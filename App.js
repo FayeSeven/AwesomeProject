@@ -7,9 +7,12 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+import {Platform, StyleSheet, Text, View, ScrollView} from 'react-native';
 import HelloComponent from './HelloComponent';
-import LifecycleComponent from './component/LifecycleComponent'
+import LifecycleComponent from './component/LifecycleComponent';
+import EIComponent, {name, age, sum} from './component/EIComponent';
+import PropsTest from './component/PropsTest';
+import StateTest from './component/StateTest';
 
 const instructions = Platform.select({
     ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -22,31 +25,60 @@ type Props = {};
 export default class App extends Component<Props> {
     constructor(props) {
         super(props);
-        this.state = {
-            remove: false
-        }
+        this.state = ({
+            remove: false,
+            result: ''
+        })
     }
 
     render() {
         let view = this.state.remove ? null : <LifecycleComponent/>;
         let text = this.state.remove ? "添加" : "移除";
+        let propsTest = {name: '名字', age: 16, sex: '女'};
+        let {name, sex} = propsTest;
         return (
-            <View style={styles.container}>
-                <Text style={styles.welcome}>Welcome to React Native!</Text>
-                <Text style={styles.instructions}>To get started, edit App.js</Text>
-                <Text style={styles.instructions}>{instructions}</Text>
-                <HelloComponent name="咿呀"/>
-                <LifecycleComponent/>
-                <Text
-                    onPress={() => {
-                        this.setState({
-                            remove: !this.state.remove
-                        })
-                    }}
-                    style={{fontSize: 20}}
-                >{text}</Text>
-                {view}
-            </View>
+            <ScrollView>
+                <View style={styles.container}>
+                    <Text style={styles.welcome}>Welcome to React Native!</Text>
+                    <Text style={styles.instructions}>To get started, edit App.js</Text>
+                    <Text style={styles.instructions}>{instructions}</Text>
+                    <HelloComponent name="咿呀"/>
+                    <LifecycleComponent/>
+                    <View style={styles.inside}>
+                        <Text
+                            onPress={() => {
+                                this.setState({
+                                    remove: !this.state.remove
+                                })
+                            }}
+                            style={{fontSize: 20}}
+                        >{text}</Text>
+                        {view}
+                    </View>
+                    <View style={styles.inside}>
+                        <Text style={{fontSize: 20}}>名字：{name}</Text>
+                        <Text style={{fontSize: 20}}>年龄：{age}</Text>
+                        <Text
+                            style={{fontSize: 20}}
+                            onPress={() => {
+                                let result = sum(2, 3);
+                                this.setState({
+                                    result: result,
+                                })
+                            }}>2+3={this.state.result}</Text>
+                    </View>
+                    <View style={styles.inside}>
+                        <PropsTest name={propsTest.name} sex='男'/>
+                        {/*延展操作符*/}
+                        <PropsTest {...propsTest}/>
+                        {/*结构赋值*/}
+                        <PropsTest name={name} sex={sex}/>
+                    </View>
+                    <View style={styles.inside}>
+                        <StateTest/>
+                    </View>
+                </View>
+            </ScrollView>
         );
     }
 }
@@ -67,5 +99,9 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         color: '#333333',
         marginBottom: 5,
+    },
+    inside: {
+        marginTop: 20,
+        fontSize: 20,
     },
 });

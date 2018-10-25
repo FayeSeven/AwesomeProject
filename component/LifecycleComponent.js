@@ -4,7 +4,7 @@
 import React, {Component} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 
-export default class HelloComponent extends Component {
+export default class LifecycleComponent extends Component {
     constructor(props) {
         super(props);
         console.log('------constructor------');
