@@ -16,6 +16,7 @@ import StateTest from './component/StateTest';
 import RefTest from './component/RefTest';
 import Student from './assets/class/Student';
 import MingStudent from './assets/class/MingStudent';
+import FlexBoxText from './component/FlexBoxText';
 
 const instructions = Platform.select({
     ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -48,6 +49,9 @@ export default class App extends Component<Props> {
                     <Text style={styles.welcome}>Welcome to React Native!</Text>
                     <Text style={styles.instructions}>To get started, edit App.js</Text>
                     <Text style={styles.instructions}>{instructions}</Text>
+                    <View style={styles.inside}>
+                        <FlexBoxText/>
+                    </View>
                     <HelloComponent name="咿呀"/>
                     <LifecycleComponent/>
                     <View style={styles.inside}>
@@ -116,7 +120,7 @@ export default class App extends Component<Props> {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
+        // justifyContent: 'center',
         backgroundColor: '#F5FCFF',
     },
     welcome: {
