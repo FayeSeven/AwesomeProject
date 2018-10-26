@@ -17,6 +17,7 @@ import RefTest from './component/RefTest';
 import Student from './assets/class/Student';
 import MingStudent from './assets/class/MingStudent';
 import FlexBoxText from './component/FlexBoxText';
+import TouchableTest from './component/TouchableTest';
 
 const instructions = Platform.select({
     ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -51,6 +52,9 @@ export default class App extends Component<Props> {
                     <Text style={styles.instructions}>{instructions}</Text>
                     <View style={styles.inside}>
                         <FlexBoxText/>
+                    </View>
+                    <View style={styles.inside}>
+                        <TouchableTest/>
                     </View>
                     <HelloComponent name="咿呀"/>
                     <LifecycleComponent/>
