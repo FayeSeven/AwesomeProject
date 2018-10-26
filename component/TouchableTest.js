@@ -3,7 +3,15 @@
  * 参考：http://www.devio.org/2017/01/10/React-Native按钮详解-Touchable系列组件使用详解/
  */
 import React, {Component} from 'react';
-import {StyleSheet, Text, View, TouchableWithoutFeedback, Alert} from 'react-native';
+import {
+    StyleSheet,
+    Text,
+    View,
+    TouchableWithoutFeedback,
+    Alert,
+    TouchableHighlight,
+    TouchableNativeFeedback
+} from 'react-native';
 
 export default class TouchableTest extends Component {
     constructor(props) {
@@ -55,17 +63,47 @@ export default class TouchableTest extends Component {
                 <Text style={styles.text}>{this.state.text}</Text>
                 <TouchableWithoutFeedback
                     onPressIn={() => {
-                        this.setState({writing : '触摸开始', startTime: new Date().getTime()})
+                        this.setState({writing: '触摸开始', startTime: new Date().getTime()})
                     }}
                     onPressOut={() => {
-                        this.setState({writing : '触摸结束,持续时间:' + (new Date().getTime() - this.state.startTime) + '毫秒'})
+                        this.setState({writing: '触摸结束,持续时间:' + (new Date().getTime() - this.state.startTime) + '毫秒'})
                     }}
                 >
                     <View style={styles.button}>
                         <Text style={styles.buttonText}>点我</Text>
                     </View>
                 </TouchableWithoutFeedback>
-                <Text style={styles.text}>{this.state.writing }</Text>
+                <Text style={styles.text}>{this.state.writing}</Text>
+                <TouchableHighlight
+                    style={styles.button}
+                    activeOpacity={0.7}
+                    underlayColor='green'
+                    onHideUnderlay={() => {
+                        this.setState({light: '衬底被隐藏'})
+                    }}
+                    onShowUnderlay={() => {
+                        this.setState({light: '衬底显示'})
+                    }}
+                    onPress={() => {
+
+                    }}
+                >
+                    <View style={styles.button}>
+                        <Text style={styles.buttonText}>TouchableHighlight</Text>
+                    </View>
+                </TouchableHighlight>
+                <Text style={styles.text}>{this.state.light}</Text>
+                <TouchableNativeFeedback
+                    //只能Android
+                    onPress={() => {
+                        this.setState({count: this.state.count + 1})
+                    }}
+                    background={TouchableNativeFeedback.SelectableBackground()}>
+                    <View style={styles.button}>
+                        <Text style={styles.text}>TouchableNativeFeedback</Text>
+                    </View>
+                </TouchableNativeFeedback>
+                <Text style={styles.text}>{this.state.text}</Text>
             </View>
         );
     }
@@ -73,8 +111,9 @@ export default class TouchableTest extends Component {
 
 const styles = StyleSheet.create({
     button: {
+        marginTop: 20,
         borderWidth: 1,
-        marginTop: 20
+        borderRadius: 5,
     },
     buttonText: {
         fontSize: 18,
