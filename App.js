@@ -18,6 +18,7 @@ import Student from './assets/class/Student';
 import MingStudent from './assets/class/MingStudent';
 import FlexBoxText from './component/FlexBoxText';
 import TouchableTest from './component/TouchableTest';
+import ImageTest from './component/ImageTest';
 
 const instructions = Platform.select({
     ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -56,7 +57,12 @@ export default class App extends Component<Props> {
                     <View style={styles.inside}>
                         <TouchableTest/>
                     </View>
-                    <HelloComponent name="咿呀"/>
+                    <View style={styles.inside}>
+                        <ImageTest/>
+                    </View>
+                    <View style={styles.inside}>
+                        <HelloComponent name="咿呀"/>
+                    </View>
                     <LifecycleComponent/>
                     <View style={styles.inside}>
                         <Text
