@@ -2,7 +2,7 @@
  * Created by 熙冰 on 2018/10/29
  */
 import React, {Component} from 'react';
-import {Text, View, Image, StyleSheet, ImageBackground, Dimensions} from 'react-native';
+import {View, Image, StyleSheet, ImageBackground, Dimensions} from 'react-native';
 
 //获取屏幕宽度;
 let width = Dimensions.get('window').width;

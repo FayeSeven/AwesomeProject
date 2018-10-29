@@ -19,6 +19,9 @@ import MingStudent from './assets/class/MingStudent';
 import FlexBoxText from './component/FlexBoxText';
 import TouchableTest from './component/TouchableTest';
 import ImageTest from './component/ImageTest';
+import TextInputTest from './component/TextInputTest';
+import ListTest from './component/ListTest';
+import FetchTest from './component/FetchTest';
 
 const instructions = Platform.select({
     ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -51,6 +54,15 @@ export default class App extends Component<Props> {
                     <Text style={styles.welcome}>Welcome to React Native!</Text>
                     <Text style={styles.instructions}>To get started, edit App.js</Text>
                     <Text style={styles.instructions}>{instructions}</Text>
+                    <View style={styles.inside}>
+                        <FetchTest/>
+                    </View>
+                    <View style={styles.inside}>
+                        <ListTest/>
+                    </View>
+                    <View style={styles.inside}>
+                        <TextInputTest/>
+                    </View>
                     <View style={styles.inside}>
                         <FlexBoxText/>
                     </View>
