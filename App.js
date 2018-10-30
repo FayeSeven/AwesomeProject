@@ -22,6 +22,7 @@ import ImageTest from './component/ImageTest';
 import TextInputTest from './component/TextInputTest';
 import ListTest from './component/ListTest';
 import FetchTest from './component/FetchTest';
+import NavigationTest from './component/NavigationTest';
 
 const instructions = Platform.select({
     ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -48,12 +49,17 @@ export default class App extends Component<Props> {
         let text = this.state.remove ? "添加" : "移除";
         let propsTest = {name: '名字', age: 16, sex: '女'};
         let {name, sex} = propsTest;
+
         return (
             <ScrollView>
                 <View style={styles.container}>
                     <Text style={styles.welcome}>Welcome to React Native!</Text>
                     <Text style={styles.instructions}>To get started, edit App.js</Text>
                     <Text style={styles.instructions}>{instructions}</Text>
+
+                    <View style={styles.inside}>
+                        <NavigationTest/>
+                    </View>
                     <View style={styles.inside}>
                         <FetchTest/>
                     </View>
@@ -138,6 +144,7 @@ export default class App extends Component<Props> {
         );
     }
 }
+
 
 const styles = StyleSheet.create({
     container: {
