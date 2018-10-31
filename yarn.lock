@@ -4868,10 +4868,10 @@ react-native-tab-view@^1.0.0:
   dependencies:
     prop-types "^15.6.1"
 
-react-native@0.57.3:
-  version "0.57.3"
-  resolved "http://registry.npm.taobao.org/react-native/download/react-native-0.57.3.tgz#ba395bc139f13430caa41614ac6197f8446e106e"
-  integrity sha1-ujlbwTnxNDDKpBYUrGGX+ERuEG4=
+react-native@^0.57.4:
+  version "0.57.4"
+  resolved "http://registry.npm.taobao.org/react-native/download/react-native-0.57.4.tgz#cb7ba78e8be420737868fa9a97caa897a534c893"
+  integrity sha1-y3unjovkIHN4aPqal8qol6U0yJM=
   dependencies:
     "@babel/runtime" "^7.0.0"
     absolute-path "^0.0.0"
@@ -4922,7 +4922,7 @@ react-native@0.57.3:
     shell-quote "1.6.1"
     stacktrace-parser "^0.1.3"
     ws "^1.1.0"
-    xcode "^0.9.1"
+    xcode "^1.0.0"
     xmldoc "^0.4.0"
     yargs "^9.0.0"
 
@@ -6162,10 +6162,10 @@ ws@^5.2.0:
   dependencies:
     async-limiter "~1.0.0"
 
-xcode@^0.9.1:
-  version "0.9.3"
-  resolved "http://registry.npm.taobao.org/xcode/download/xcode-0.9.3.tgz#910a89c16aee6cc0b42ca805a6d0b4cf87211cf3"
-  integrity sha1-kQqJwWrubMC0LKgFptC0z4chHPM=
+xcode@^1.0.0:
+  version "1.0.0"
+  resolved "http://registry.npm.taobao.org/xcode/download/xcode-1.0.0.tgz#e1f5b1443245ded38c180796df1a10fdeda084ec"
+  integrity sha1-4fWxRDJF3tOMGAeW3xoQ/e2ghOw=
   dependencies:
     pegjs "^0.10.0"
     simple-plist "^0.2.1"
